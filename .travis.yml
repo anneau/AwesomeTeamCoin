@@ -1,0 +1,16 @@
+dist: trusty
+sudo: required
+group: beta
+language: node_js
+node_js:
+  - "8"
+cache:
+  directories:
+    - node_modules
+before_script:
+  - truffle version
+script:
+  - yarn run lint
+  - yarn run test
+notifications:
+  email: false
