@@ -3,7 +3,7 @@
         <nav class="navbar">
             <div class="container">
                 <div class="navbar-brand">
-                    AwesomeCoin
+                    AwesomeTeamCoin
                 </div>
                 <div id="navbarMenuHeroA" class="navbar-menu">
                     <div class="navbar-end">
