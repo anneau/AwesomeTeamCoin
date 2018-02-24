@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="field has-text-left">
-                        <label class="label">Amount of Sending AwesomeCoin</label>
+                        <label class="label">Amount of Sending AwesomeTeamCoin</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="Input receiver address" v-model="amount">
                         </div>

@@ -1,11 +1,11 @@
 import assertRevert from './helpers/assertRevert';
-const AwesomeCoin = artifacts.require('AwesomeCoin');
+const AwesomeTeamCoin = artifacts.require('AwesomeTeamCoin');
 
-contract('AwesomeCoin', accounts => {
+contract('AwesomeTeamCoin', accounts => {
   let instance;
 
   beforeEach(async function () {
-    instance = await AwesomeCoin.new(100, { from: accounts[0] });
+    instance = await AwesomeTeamCoin.new(100, { from: accounts[0] });
   });
 
   it('should return the correct totalSupply after construction', async function () {

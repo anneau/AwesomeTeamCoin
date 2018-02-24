@@ -7,7 +7,7 @@
                     <article class="media">
                         <div class="media-content">
                             <div class="content has-text-centered">
-                                <h2>AwesomeCoin</h2>
+                                <h2>AwesomeTeamCoin</h2>
                                 <table class="table is-bordered">
                                     <tbody>
                                     <tr><th class="has-text-centered">Address</th><th class="has-text-centered">Balances</th></tr>
