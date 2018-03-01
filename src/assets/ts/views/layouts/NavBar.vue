@@ -10,8 +10,8 @@
                         <router-link to="/" class="navbar-item">
                             Home
                         </router-link>
-                        <router-link to="/transactions" class="navbar-item">
-                            Transactions
+                        <router-link to="/trading" class="navbar-item">
+                            Trade
                         </router-link>
                         <router-link to="/balances" class="navbar-item">
                             Balances

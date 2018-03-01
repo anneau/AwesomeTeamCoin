@@ -1,5 +1,5 @@
 import Web3 from 'web3'
-import { getWeb3 } from './stores/api/getWeb3';
+import { getWeb3 } from './api/getWeb3';
 
 declare global {
     interface Window {

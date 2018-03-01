@@ -2,11 +2,9 @@ import './bootstrap'
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import router from './router'
-import store from './stores/index'
 
 @Component<App>({
-    router,
-    store
+    router
 })
 class App extends Vue {
 
