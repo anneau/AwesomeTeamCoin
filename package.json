@@ -6,17 +6,21 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "console": "truffle console",
+    "console": "truffle console --network ganache",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate --network ganache",
     "start": "scripts/start.sh",
     "test": "scripts/test.sh",
     "lint:es": "eslint .",
     "lint:sol": "solium -d .",
-    "lint": "yarn run lint:es && yarn run lint:sol"
+    "lint": "yarn run lint:es && yarn run lint:sol",
+    "types": "truffle-contract-typescript build ./build/contracts ./src/assets/ts/contract_types.ts"
   },
   "devDependencies": {
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "bignumber.js": "^6.0.0",
     "eslint": "^4.16.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
@@ -26,6 +30,8 @@
     "ganache-cli": "^6.0.3",
     "solium": "^1.1.3",
     "truffle": "^4.0.5",
+    "truffle-contract": "^3.0.3",
+    "truffle-contract-typescript": "^1.0.13",
     "truffle-hdwallet-provider": "^0.0.3",
     "zeppelin-solidity": "^1.6.0"
   }

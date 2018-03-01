@@ -1,6 +1,6 @@
 import Web3 from 'web3'
 
-export const getWeb3 = async function () {
+export const getWeb3 = function () {
     let web3 : Web3 | undefined
 
     if (typeof web3 !== 'undefined') {
@@ -8,7 +8,7 @@ export const getWeb3 = async function () {
 
         console.log('Injected web3 detected.')
     } else {
-        let provider = new Web3.providers.HttpProvider('http://localhost:8545')
+        let provider = new Web3.providers.HttpProvider('http://localhost:7545')
 
         web3 = new Web3(provider)
 

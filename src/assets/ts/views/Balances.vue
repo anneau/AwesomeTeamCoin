@@ -11,10 +11,10 @@
                                 <table class="table is-bordered">
                                     <tbody>
                                     <tr><th class="has-text-centered">Address</th><th class="has-text-centered">Balances</th></tr>
-                                    <tr v-for="showingAccount in showingAccounts">
-                                        <th class="has-text-centered">{{ showingAccount }}</th>
-                                        <th class="has-text-centered">OK</th>
-                                    </tr>
+                                    <!--<tr v-for="showingAccount in showingAccounts">-->
+                                        <!--<th class="has-text-centered">{{ showingAccount }}</th>-->
+                                        <!--<th class="has-text-centered">OK</th>-->
+                                    <!--</tr>-->
                                     </tbody>
                                 </table>
                             </div>
@@ -29,9 +29,8 @@
 <script lang="ts">
     import Vue from 'vue'
     import Component from 'vue-class-component'
-    import { Getter, Action } from 'vuex-class'
     import NavBar from './layouts/NavBar.vue'
-    import Web3 from 'web3'
+    import AwesomeTeamCoin from '../../../../build/contracts/AwesomeTeamCoin.json'
 
     @Component({
         components: {
@@ -39,14 +38,21 @@
         }
     })
     export default class Balances extends Vue {
-        @Getter('getWeb3Store') web3 : Web3
-        @Action('setWeb3Store') setWeb3 : any
-
-        showingAccounts = {}
 
         async created () {
-            await this.setWeb3()
-            let accounts = await this.web3.eth.getAccounts()
+            let accounts = await window['web3'].eth.getAccounts()
+            const contract = require('truffle-contract')
+            const atc = contract(AwesomeTeamCoin)
+            atc.setProvider(window.web3.currentProvider)
+            if (typeof atc.currentProvider.sendAsync !== "function") {
+                atc.currentProvider.sendAsync = function() {
+                    return atc.currentProvider.send.apply(
+                        atc.currentProvider, arguments
+                    );
+                };
+            }
+            const instance = await atc.deployed()
+            console.log(await instance.totalSupply())
             for (let account of accounts) {
                 console.log(account)
             }

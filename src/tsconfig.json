@@ -8,6 +8,8 @@
     "module": "es2015",
     "moduleResolution": "node",
     "isolatedModules": false,
+    "types": ["node"],
+    "typeRoots": ["node_modules/@types"],
     "experimentalDecorators": true,
     "noImplicitAny": true,
     "noImplicitThis": true,

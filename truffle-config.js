@@ -10,7 +10,7 @@ module.exports = {
     },
     ganache: {
       host: 'localhost',
-      port: 8545,
+      port: 7545,
       network_id: '*', // eslint-disable-line camelcase
     },
   },

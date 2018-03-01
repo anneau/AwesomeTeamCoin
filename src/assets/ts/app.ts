@@ -1,3 +1,4 @@
+import './bootstrap'
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import router from './router'
