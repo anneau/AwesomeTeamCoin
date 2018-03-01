@@ -11,10 +11,10 @@
                                 <table class="table is-bordered">
                                     <tbody>
                                     <tr><th class="has-text-centered">Address</th><th class="has-text-centered">Balances</th></tr>
-                                    <!--<tr v-for="showingAccount in showingAccounts">-->
-                                        <!--<th class="has-text-centered">{{ showingAccount }}</th>-->
-                                        <!--<th class="has-text-centered">OK</th>-->
-                                    <!--</tr>-->
+                                    <tr v-for="showingAccount in showingAccounts">
+                                        <th class="has-text-centered">{{ showingAccount.address }}</th>
+                                        <th class="has-text-centered">{{ showingAccount.balances }}</th>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -32,12 +32,18 @@
     import NavBar from './layouts/NavBar.vue'
     import AwesomeTeamCoin from '../../../../build/contracts/AwesomeTeamCoin.json'
 
+    interface Account {
+        address: string,
+        balances: number
+    }
+
     @Component({
         components: {
             'nav-bar': NavBar
         }
     })
     export default class Balances extends Vue {
+        showingAccounts : any[] = []
 
         async created () {
             let accounts = await window['web3'].eth.getAccounts()
@@ -52,9 +58,12 @@
                 };
             }
             const instance = await atc.deployed()
-            console.log(await instance.totalSupply())
             for (let account of accounts) {
-                console.log(account)
+                const balances = await instance.balanceOf(account)
+                let accountData = {} as Account
+                accountData.address = account
+                accountData.balances = balances.c[0]
+                this.showingAccounts.push(accountData)
             }
         }
     }
