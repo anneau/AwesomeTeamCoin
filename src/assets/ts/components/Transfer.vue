@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="field has-text-left">
-                        <label class="label">Amount of Sending AwesomeTeamCoin</label>
+                        <label class="label">Amount</label>
                         <div class="control">
                             <input class="input" type="text" placeholder="Input receiver address" v-model="amount">
                         </div>
@@ -33,18 +33,29 @@
 <script lang="ts">
     import Vue from 'vue'
     import Component from 'vue-class-component'
-    import { Getter } from 'vuex-class'
-    import Web3 from 'web3'
+    import AwesomeTeamCoin from '../../../../build/contracts/AwesomeTeamCoin.json'
 
     @Component
     export default class CreateAccount extends Vue {
-        senderAddress = ''
-        receiverAddress = ''
-        amount = 0
-        @Getter('getWeb3Store') web3 : Web3
+        senderAddress = '0x627306090abaB3A6e1400e9345bC60c78a8BEf57'
+        receiverAddress = '0xf17f52151EbEF6C7334FAD080c5704D77216b732'
+        amount = 10
 
         async submit () {
-
+            const contract = require('truffle-contract')
+            const atc = contract(AwesomeTeamCoin)
+            atc.setProvider(window.web3.currentProvider)
+            if (typeof atc.currentProvider.sendAsync !== "function") {
+                atc.currentProvider.sendAsync = function() {
+                    return atc.currentProvider.send.apply(
+                        atc.currentProvider, arguments
+                    );
+                };
+            }
+            const instance = await atc.deployed()
+            console.log(instance)
+            const response = await instance.transfer(this.receiverAddress, this.amount, { from: this.senderAddress })
+            console.log(response)
         }
     }
 </script>
