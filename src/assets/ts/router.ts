@@ -16,11 +16,6 @@ export default new VueRouter({
             name: 'home'
         },
         {
-            path: '/transactions',
-            component: Transactions,
-            name: 'transactions'
-        },
-        {
             path: '/balances',
             component: Balances,
             name: 'balances'
