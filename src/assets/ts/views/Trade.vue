@@ -14,7 +14,6 @@
 <script lang="ts">
     import Vue from 'vue'
     import Component from 'vue-class-component'
-    import { mapGetters, mapActions } from 'vuex'
     import NavBar from './layouts/NavBar.vue'
     import Transfer from '../components/Transfer.vue'
 
@@ -23,9 +22,8 @@
             'nav-bar': NavBar,
             'transfer': Transfer
         },
-        computed: mapGetters(['getWeb3Store'])
     })
-    export default class Trading extends Vue {
+    export default class Trade extends Vue {
 
     }
 </script>
